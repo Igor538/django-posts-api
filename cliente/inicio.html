@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Posts</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fafafa;
+}
+.post {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.post:last-child { border-bottom: none; }
+strong { color: #333; }
+.text { color: #555; margin: 6px 0; line-height: 1.4; }
+a.button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #555;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+a.button:hover { background: #555; }
+form.inline-edit {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px;
+}
+form.inline-edit input,
+form.inline-edit textarea {
+    margin-bottom: 6px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+form.inline-edit button {
+    width: 80px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+}
+form.inline-edit button:hover { background: #555; }
+.error { color: #e63946; font-weight: bold; text-align: center; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<h1>Posts</h1>
+<a href="/postar/" class="button">+ Novo</a>
+
+{% if error %}
+  <p class="error">{{ error }}</p>
+{% endif %}
+
+<h2>Recentes:</h2>
+{% for post in posts %}
+<div class="post">
+  {% if post_editar and post_editar.id == post.id %}
+    <!-- Formulário de edição inline -->
+    <form method="post" action="{% url 'editar_post' post.id %}" class="inline-edit">
+      {% csrf_token %}
+      <input type="text" name="autor" value="{{ post.autor }}" required>
+      <textarea name="conteudo" required>{{ post.conteudo }}</textarea>
+      <button type="submit">Salvar</button>
+    </form>
+  {% else %}
+    <strong>{{ post.autor }}</strong>
+    <div class="text">{{ post.conteudo }}</div>
+    <div>
+      <a href="{% url 'inicio_editar' post.id %}" class="button">Editar</a>
+      <a href="{% url 'remover_post' post.id %}" class="button" onclick="return confirm('Tem certeza que quer apagar?')">Remover</a>
+    </div>
+  {% endif %}
+</div>
+{% empty %}
+<p>Nenhum post ainda.</p>
+{% endfor %}
+</body>
+</html>

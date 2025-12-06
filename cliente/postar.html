@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novo Post</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+      body {
+        font-family: Arial;
+        background: #fafafa;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      h1 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      a {
+        display: inline-block;
+        padding: 8px 16px;
+        background: #666;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      a:hover {
+        background: #444;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        color: #333;
+        font-weight: bold;
+        margin-top: 12px;
+        margin-bottom: 6px;
+      }
+      input,
+      textarea {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: Arial;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #333;
+        background: #fafafa;
+      }
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #555;
+      }
+
+      .error {
+        color: #e63946; /* vermelho alaranjado suave */
+        background-color: #ffe5e5; /* fundo levemente rosado */
+        font-weight: bold;
+        text-align: center;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Novo Post</h1>
+      <a href="/inicio/">← Voltar</a>
+
+      {% if error %}
+        <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <form method="post" action="/postar/">
+        {% csrf_token %}
+        <label for="autor">Nome:</label>
+        <input type="text" id="autor" name="autor" placeholder="Digite seu nome">
+        <label for="conteudo">Mensagem:</label>
+        <textarea id="conteudo" name="conteudo" placeholder="Digite sua mensagem"></textarea>
+        <button type="submit">Postar</button>
+      </form>
+    </div>
+  </body>
+</html>
