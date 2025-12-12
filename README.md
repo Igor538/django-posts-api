@@ -19,7 +19,7 @@ Projeto de exemplo utilizando **Django** e **Django REST Framework**, desenvolvi
 ### 1️⃣ Clone o repositório
 ```bash
 git clone https://github.com/seu-usuario/aula12.git
-cd aula12
+cd aula11
 ```
 
 ### 2️⃣ Crie e ative o ambiente virtual
