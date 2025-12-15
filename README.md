@@ -43,13 +43,7 @@ pip install -r requirements.txt
 ```
 ---
 
-### 4️⃣ Entrar na pasta do projeto
-```bash
-cd aula11
-```
----
-
-### 🔑 Gerar uma chave aleatória para o Django SECRET_KEY
+### 4️⃣ 🔑 Gerar uma chave aleatória para o Django SECRET_KEY
 ```bash
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 # Copie o valor gerado e substitua a variável SECRET_KEY em settings.py
@@ -58,17 +52,23 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 
 ### 5️⃣ Ajustar o settings.py
 ```bash
-No settings.py deixe o DEBUG = True
+No settings.py deixe DEBUG = True
 ```
 ---
 
-### 6️⃣ Executar as migrações
+### 6️⃣ Entrar na pasta do projeto
+```bash
+cd aula11
+```
+---
+
+### 7️⃣ Executar as migrações
 ```bash
 python manage.py migrate
 ```
 ---
 
-### 7️⃣ Iniciar o servidor
+### 8️⃣ Iniciar o servidor
 ```bash
 python manage.py runserver
 ```
