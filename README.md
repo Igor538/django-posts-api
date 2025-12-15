@@ -1,16 +1,20 @@
 # 📝 Projeto Django + Django REST Framework
 Projeto de exemplo utilizando Django e Django REST Framework, desenvolvido para demonstrar conceitos de CRUD, API REST, ambiente virtual e boas práticas no backend.
 
-✨ Funcionalidades
-✔ Criar, editar e remover posts/tarefas  
-✔ Visualizar posts/tarefas recentes  
-✔ API REST completa  
-✔ Suporte a CORS  
+
+## ✨ Funcionalidades
+
+- Criar, editar e remover posts/tarefas  
+- Visualizar posts/tarefas recentes  
+- API REST completa  
+- Suporte a CORS  
+
 ---
 
 ## 🚀 Como Rodar o Projeto
-```bash
+
 ### 1️⃣ Clonar o repositório direto no VS Code
+```bash
 git clone https://github.com/Igor538/django-posts-api.git
 code django-posts-api
 ```
@@ -64,7 +68,7 @@ python manage.py migrate
 ```
 ---
 
-### 7️⃣ Iniciar o servidor de desenvolvimento
+### 7️⃣ Iniciar o servidor
 ```bash
 python manage.py runserver
 ```
